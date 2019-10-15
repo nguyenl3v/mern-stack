@@ -4,6 +4,7 @@ const cors = require("cors");
 const logger = require("morgan");
 const app = express();
 
+const fileUpload = require("express-fileupload");
 var mongoose = require("mongoose");
 const db = require("./config/db").MongoURL;
 mongoose
@@ -19,12 +20,18 @@ app.use(
     preflightContinue: false
   })
 );
+app.use(fileUpload());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
+const adminMenu = require("./router/adminMenu");
+const adminCategories = require("./router/adminCategories");
+const slideShow = require("./router/slideShow");
+app.use("/admin/slideshow", slideShow);
+app.use("/admin/categories", adminCategories);
+app.use("/admin/menu", adminMenu);
 
 
 if (process.env.NODE_ENV === "production") {
