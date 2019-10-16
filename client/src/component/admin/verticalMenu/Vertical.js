@@ -15,7 +15,7 @@ export default function Navigation() {
         </li>
         <li>
           <i className="fa fa-bars mr-3"></i>
-          <a href="/admin/slideshow">slideShow</a>
+          <a href="/admin/slideshows">slideShow</a>
         </li>
       </ul>
     </div>

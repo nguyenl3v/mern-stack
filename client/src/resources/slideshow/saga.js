@@ -14,7 +14,7 @@ function* addSlideShow() {
   yield takeEvery(ADDSLIDESHOW, function* _addSlideShow({ payload }) {
     const { heading, title, button, buttonLink } = payload;
     try {
-      const res = yield axios.post(`${API}/admin/slideshows/add`, {
+      const res = yield axios.post(`${API}/admin/slideshow/add`, {
         heading,
         title,
         button,
@@ -29,14 +29,14 @@ function* addSlideShow() {
 }
 
 function* getSlideShow() {
-  const res = yield axios.get(`${API}/admin/slideshows`);
+  const res = yield axios.get(`${API}/admin/slideshow`);
   yield put(_getSlideShow(res.data));
 }
 
 function* deleteSlideShow() {
   yield takeEvery(DELETESLIDESHOW, function* _deleteSlideShow({ payload }) {
     const { id, file } = payload;
-    const res = yield axios.get(`${API}/admin/slideshows/delete/${id}/${file}`);
+    const res = yield axios.get(`${API}/admin/slideshow/delete/${id}/${file}`);
     ToastifySuccess(res.data.msg);
     setTimeout(() => (window.location.href = "/admin/slideshows"), 2001);
   });
@@ -47,7 +47,7 @@ function* editSlideShow() {
     const { heading, title, button, buttonLink,urlFile, id } = payload;
     try {
       const res = yield axios({
-        url: `${API}/admin/slideshows/edit`,
+        url: `${API}/admin/slideshow/edit`,
         method: "post",
         data: { heading, title, button, buttonLink,urlFile, id }
       });
