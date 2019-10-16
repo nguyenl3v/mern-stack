@@ -15,7 +15,7 @@ app.use(
   cors({
     allowedHeaders: ["sessionId", "Content-Type", "authorization"],
     exposedHeaders: ["sessionId", "authorization"],
-    origin: "http://localhost:3000" || "https://shielded-beyond-24124.herokuapp.com",
+    origin: "http://localhost:3000",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false
   })
@@ -35,9 +35,9 @@ app.use("/admin/menu", adminMenu);
 
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client"));
+  app.use(express.static("client/build"));
   app.get("*", function(req, res) {
-    res.sendFile(path.resolve(__dirname, "client", "index.js"));
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
 
