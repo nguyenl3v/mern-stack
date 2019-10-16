@@ -22,7 +22,7 @@ function AddSLideShow({ addSlideShow, upload }) {
     <div className="container">
       <MenuRow>
         <h2>Add SlideShow</h2>
-        <a href="/admin/slideshow" className="btn btn-primary">
+        <a href="/admin/slideshows" className="btn btn-primary">
           Back To Slideshow
         </a>
       </MenuRow>

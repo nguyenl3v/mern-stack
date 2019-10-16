@@ -49,21 +49,25 @@ router.post("/upload", function(req, res) {
   image.mv(path, function(err) {
     if (err) console.log(err);
   });
-  images.push(id +"/"+ imagefile);
+  images.push(id + "/" + imagefile);
 });
 router.post("/edit", function(req, res) {
-  const { heading, title, button, buttonLink,urlFile, id } = req.body;
+  const { heading, title, button, buttonLink, urlFile, id } = req.body;
   const path = "client/public/upload/" + urlFile;
   SlideShow.findById(id, function(err, slide) {
-    slide.heading = heading;
-    slide.title = title;
-    slide.button = button;
-    slide.buttonLink = buttonLink;
-    slide.image = images.toString();
+    heading.length > 0 ? (slide.heading = heading) : slide.heading;
+    title.length > 0 ? (slide.title = title) : slide.title;
+    button.length > 0 ? (slide.button = button) : slide.button;
+    buttonLink.length > 0 ? (slide.buttonLink = buttonLink) : slide.buttonLink;
+    images.toString().length > 0
+      ? (slide.image = images.toString())
+      : slide.image;
     slide.save(function(err) {
-      fs.remove(path, function(err) {
-        if (err) res.status(500).json({ msg: err });
-      });
+      if (images.toString().length > 0) {
+        fs.remove(path, function(err) {
+          if (err) res.status(500).json({ msg: err });
+        });
+      }
     });
     images = [];
     res.status(201).json({ msg: "edit slideShow success" });

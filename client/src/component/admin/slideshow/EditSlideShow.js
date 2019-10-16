@@ -27,7 +27,7 @@ function EditSlideShow({ slideShow, match, _editSlideShow, upload }) {
     <div className="container">
       <MenuRow>
         <h2>Edit SlideShow</h2>
-        <a href="/admin/slideshow" className="btn btn-primary">
+        <a href="/admin/slideshows" className="btn btn-primary">
           Back to SlideShow
         </a>
       </MenuRow>
@@ -91,7 +91,7 @@ function EditSlideShow({ slideShow, match, _editSlideShow, upload }) {
             <img
               style={{ width: 50 }}
               src={
-                "../../../slideshow/" + filterData._id + "/" + filterData.image
+                "../../../upload/" + filterData.image
               }
               alt="imageADM"
             />
