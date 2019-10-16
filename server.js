@@ -15,7 +15,7 @@ app.use(
   cors({
     allowedHeaders: ["sessionId", "Content-Type", "authorization"],
     exposedHeaders: ["sessionId", "authorization"],
-    origin: "http://localhost:3000" || "https://mern-stack-cms.herokuapp.com",
+    origin: "http://localhost:3000",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false
   })
