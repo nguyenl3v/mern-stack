@@ -15,7 +15,7 @@ app.use(
   cors({
     allowedHeaders: ["sessionId", "Content-Type", "authorization"],
     exposedHeaders: ["sessionId", "authorization"],
-    origin: "http://localhost:3000",
+    origin: "http://localhost:3000" || "https://mern-cms-stack.herokuapp.com",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false
   })
@@ -37,7 +37,7 @@ app.use("/admin/menu", adminMenu);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   app.get("*", function(req, res) {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    res.sendFile(path.resolve(__dirname, "client/build/index.html"));
   });
 }
 
