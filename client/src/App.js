@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Switch, Route} from "react-router-dom";
-import Admin from './components/admin/Admin';
+import Admin from './component/admin/Admin';
 function App() {
 
   return (

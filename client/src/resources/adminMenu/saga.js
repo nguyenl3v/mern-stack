@@ -7,7 +7,7 @@ import {
 import { API } from "../../config/Axios";
 import axios from "axios";
 import { fetchListDataSuccess } from "./action";
-import { ToastifySuccess, ToastifyField } from "../../components/Toastify";
+import { ToastifySuccess, ToastifyField } from "../../component/Toastify";
 
 function* getListData() {
   const res = yield axios.get(`${API}/admin/menu/list`);

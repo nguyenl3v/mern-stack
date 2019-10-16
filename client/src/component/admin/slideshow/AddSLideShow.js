@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import { MenuRow } from "../menu/style";
 import { ToastContainer } from "react-toastify";
-import { addSlideShow } from "../../../resources/slideshow/action";
+import { addSlideShow, upload } from "../../../resources/slideshow/action";
 import { connect } from "react-redux";
 
-function AddSLideShow({ addSlideShow }) {
+function AddSLideShow({ addSlideShow, upload }) {
   const [heading, setHeading] = useState("");
   const [title, setTitle] = useState("");
   const [button, setbutton] = useState("");
   const [buttonLink, setButtonLink] = useState("");
-  const [image, setImage] = useState("");
+  const uploadSlide = files => {
+    let data = new FormData();
+    data.append("file", files[0]);
+    upload(data);
+  };
   const saveAddSlideShow = async e => {
     e.preventDefault();
-    let data = new FormData();
-    data.append('file', image[0]);
-    // const res = await Axios.post("http://localhost:4000/admin/slideshow/add",data,{headers:{"Content-type":"multipart/form-data"}})
-    addSlideShow(heading, title, button, buttonLink, data);
+    addSlideShow(heading, title, button, buttonLink);
   };
   return (
     <div className="container">
@@ -26,10 +27,7 @@ function AddSLideShow({ addSlideShow }) {
         </a>
       </MenuRow>
       <ToastContainer autoClose={2000} />
-      <form
-        method="post"
-        onSubmit={e => saveAddSlideShow(e)}
-      >
+      <form method="post" onSubmit={e => saveAddSlideShow(e)}>
         <div className="form-group">
           <label>heading</label>
           <input
@@ -72,7 +70,7 @@ function AddSLideShow({ addSlideShow }) {
             type="file"
             className="form-control"
             placeholder="image or video"
-            onChange={e => setImage(e.target.files)}
+            onChange={e => uploadSlide(e.target.files)}
           />
         </div>
         <button className="btn btn-success" type="submit">
@@ -84,5 +82,5 @@ function AddSLideShow({ addSlideShow }) {
 }
 export default connect(
   null,
-  { addSlideShow }
+  { addSlideShow, upload }
 )(AddSLideShow);

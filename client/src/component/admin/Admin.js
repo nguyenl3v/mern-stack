@@ -9,6 +9,7 @@ import AddCategories from "./categories/AddCategories";
 import EditCategories from "./categories/EditCategories";
 import SlideShow from "./slideshow/SlideShow";
 import AddSLideShow from "./slideshow/AddSLideShow";
+import EditSlideShow from "./slideshow/EditSlideShow";
 
 function Admin() {
   return (
@@ -35,6 +36,7 @@ function Admin() {
           <Route path="/admin/categories/add" exact component={AddCategories} />
           <Route path="/admin/categories/edit/:id" exact component={EditCategories} />
           <Route path="/admin/slideshow/add" exact component={AddSLideShow} />
+          <Route path="/admin/slideshow/edit/:id" exact component={EditSlideShow} />
         </div>
       </div>
     </div>

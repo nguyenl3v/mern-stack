@@ -2,7 +2,7 @@ import { put, takeLatest } from "redux-saga/effects";
 import { ADDCATEGORIES, DELETECATEGORIES, EDITCATEGORIES } from "./constants";
 import { API } from "../../config/Axios";
 import axios from "axios";
-import { ToastifySuccess, ToastifyField } from "../../components/Toastify";
+import { ToastifySuccess, ToastifyField } from "../../component/Toastify";
 import { _getCategories } from "./action";
 
 function* getCategories() {

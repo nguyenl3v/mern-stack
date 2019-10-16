@@ -2,15 +2,15 @@ import React from "react";
 import { MenuRow } from "../menu/style";
 import { connect } from "react-redux";
 import Plyr from "react-plyr";
-import { API } from "../../../config/Axios";
 import { deleteSlideShow } from "../../../resources/slideshow/action";
 import { ToastContainer } from "react-toastify";
 
 function SlideShow({ dataSlideShow, deleteSlideShow }) {
   const { data } = dataSlideShow;
-  const _deleteSlideShow = (e, id) => {
+  const _deleteSlideShow = (e, id, file) => {
     e.preventDefault();
-    deleteSlideShow(id);
+    const fileURL = file.match(/([0-9])\w+/);
+    deleteSlideShow(id,fileURL[0]);
   };
   return (
     <div className="adm-Slideshow">
@@ -43,7 +43,7 @@ function SlideShow({ dataSlideShow, deleteSlideShow }) {
                       type="video"
                       sources={[
                         {
-                          src: ` ${API}/slideshow/${item._id}/${item.image}`,
+                          src: `../upload/${item.image}`,
                           type: "video/mp4",
                           size: "1440",
                           kind: "captions",
@@ -54,19 +54,19 @@ function SlideShow({ dataSlideShow, deleteSlideShow }) {
                     />
                   </div>
                 ) : (
-                  <img style={{ width: 50 }} src={item.image} alt="imageADM" />
+                  <img style={{ width: 50 }} src={"../upload/" + item.image} alt="imageSlideShowADM" />
                 )}
               </td>
               <td>
-                <a href="/admin/menu/edit/">
+                <a href={"/admin/slideshow/edit/" + item._id}>
                   <i className="fa fa-pencil-square-o pr-1" />
                   edit
                 </a>
               </td>
               <td>
                 <a
-                  href={"/admin/menu/" + item._id}
-                  onClick={e => _deleteSlideShow(e, item._id)}
+                  href={"/admin/slideshow/" + item._id}
+                  onClick={e => _deleteSlideShow(e,item._id,item.image)}
                 >
                   <i className="fa fa-trash-o pr-1" />
                   delete

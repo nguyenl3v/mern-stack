@@ -14,7 +14,7 @@ const slideshowSchema = new mongoose.Schema({
     type:String
   },
   image:{
-    type:Object
+    type:String
   }
 });
 
