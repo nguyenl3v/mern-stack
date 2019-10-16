@@ -15,7 +15,7 @@ app.use(
   cors({
     allowedHeaders: ["sessionId", "Content-Type", "authorization"],
     exposedHeaders: ["sessionId", "authorization"],
-    origin: "http://localhost:3000",
+    origin: "http://localhost:3000" && "https://shielded-beyond-24124.herokuapp.com",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false
   })
