@@ -16,7 +16,7 @@ function SlideShow({ dataSlideShow, deleteSlideShow }) {
     <div className="adm-Slideshow">
       <MenuRow>
         <h2>Admin SlideShow</h2>
-        <a href="/admin/slideshow/add" className="btn btn-primary">
+        <a href="/admin/slideshows/add" className="btn btn-primary">
           Add To Slideshow
         </a>
       </MenuRow>
@@ -58,14 +58,14 @@ function SlideShow({ dataSlideShow, deleteSlideShow }) {
                 )}
               </td>
               <td>
-                <a href={"/admin/slideshow/edit/" + item._id}>
+                <a href={"/admin/slideshows/edit/" + item._id}>
                   <i className="fa fa-pencil-square-o pr-1" />
                   edit
                 </a>
               </td>
               <td>
                 <a
-                  href={"/admin/slideshow/" + item._id}
+                  href={"/admin/slideshows/" + item._id}
                   onClick={e => _deleteSlideShow(e,item._id,item.image)}
                 >
                   <i className="fa fa-trash-o pr-1" />

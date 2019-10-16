@@ -14,14 +14,14 @@ function* addSlideShow() {
   yield takeEvery(ADDSLIDESHOW, function* _addSlideShow({ payload }) {
     const { heading, title, button, buttonLink } = payload;
     try {
-      const res = yield axios.post(`${API}/admin/slideshow/add`, {
+      const res = yield axios.post(`${API}/admin/slideshows/add`, {
         heading,
         title,
         button,
         buttonLink
       });
       ToastifySuccess(res.data.msg);
-      setTimeout(() => (window.location.href = "/admin/slideshow"), 2001);
+      setTimeout(() => (window.location.href = "/admin/slideshows"), 2001);
     } catch (error) {
       ToastifyField(error.response.data.msg);
     }
@@ -29,16 +29,16 @@ function* addSlideShow() {
 }
 
 function* getSlideShow() {
-  const res = yield axios.get(`${API}/admin/slideshow`);
+  const res = yield axios.get(`${API}/admin/slideshows`);
   yield put(_getSlideShow(res.data));
 }
 
 function* deleteSlideShow() {
   yield takeEvery(DELETESLIDESHOW, function* _deleteSlideShow({ payload }) {
     const { id, file } = payload;
-    const res = yield axios.get(`${API}/admin/slideshow/delete/${id}/${file}`);
+    const res = yield axios.get(`${API}/admin/slideshows/delete/${id}/${file}`);
     ToastifySuccess(res.data.msg);
-    setTimeout(() => (window.location.href = "/admin/slideshow"), 2001);
+    setTimeout(() => (window.location.href = "/admin/slideshows"), 2001);
   });
 }
 
@@ -47,12 +47,12 @@ function* editSlideShow() {
     const { heading, title, button, buttonLink,urlFile, id } = payload;
     try {
       const res = yield axios({
-        url: `${API}/admin/slideshow/edit`,
+        url: `${API}/admin/slideshows/edit`,
         method: "post",
         data: { heading, title, button, buttonLink,urlFile, id }
       });
       ToastifySuccess(res.data.msg);
-      setTimeout(() => (window.location.href = "/admin/slideshow"), 2001);
+      setTimeout(() => (window.location.href = "/admin/slideshows"), 2001);
     } catch (error) {
       ToastifyField(error.response.data.msg);
     }

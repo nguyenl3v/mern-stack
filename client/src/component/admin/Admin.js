@@ -20,14 +20,14 @@ function Admin() {
             <Route path="/admin" exact component={Vertical} />
             <Route path="/admin/menu" exact component={Vertical} />
             <Route path="/admin/categories" exact component={Vertical} />
-            <Route path="/admin/slideshow" exact component={Vertical} />
+            <Route path="/admin/slideshows" exact component={Vertical} />
           </Switch>
         </div>
         <div className="col-9">
           <Switch>
             <Route path="/admin/menu" exact component={Menu} />
             <Route path="/admin/categories" exact component={Categories} />
-            <Route path="/admin/slideshow" exact component={SlideShow} />
+            <Route path="/admin/slideshows" exact component={SlideShow} />
           </Switch>
         </div>
         <div className="col-12">
@@ -35,8 +35,8 @@ function Admin() {
           <Route path="/admin/menu/add" exact component={AddMenu} />
           <Route path="/admin/categories/add" exact component={AddCategories} />
           <Route path="/admin/categories/edit/:id" exact component={EditCategories} />
-          <Route path="/admin/slideshow/add" exact component={AddSLideShow} />
-          <Route path="/admin/slideshow/edit/:id" exact component={EditSlideShow} />
+          <Route path="/admin/slideshows/add" exact component={AddSLideShow} />
+          <Route path="/admin/slideshows/edit/:id" exact component={EditSlideShow} />
         </div>
       </div>
     </div>
