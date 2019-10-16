@@ -33,11 +33,10 @@ app.use("/admin/slideshow", slideShow);
 app.use("/admin/categories", adminCategories);
 app.use("/admin/menu", adminMenu);
 
-
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   app.get("*", function(req, res) {
-    res.sendFile(path.resolve(__dirname, "client/build/index.html"));
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
 
